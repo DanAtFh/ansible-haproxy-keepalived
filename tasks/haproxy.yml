@@ -2,7 +2,7 @@
 - name: Ensure dependencies are installed
   yum: name={{ item }} state=installed
   with_items:
-    - openssl-devel 
+    - openssl-devel
     - pcre-devel
     - make
     - gcc
@@ -13,15 +13,20 @@
   apt: name={{ item }} state=installed
   with_items:
     - build-essential
-    - zlib1g-dev 
+    - zlib1g-dev
     - libpcre3-dev
     - libssl-dev
     - socat
+    - mysql-client
   when: ansible_os_family == "Debian"
+
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
 
 - name: Ensure haproxy src is downloaded
   get_url: >
-    dest={{ haproxy_src_dir }} 
+    dest={{ haproxy_src_dir }}
     url={{ haproxy_download_url }}
 
 - name: Ensure haproxy is unarchived
@@ -59,7 +64,7 @@
 
 - name: Ensure haproxy init script is copied(Debian)
   template: >
-    src=templates/haproxy.debian.init 
+    src=templates/haproxy.debian.init
     dest=/etc/init.d/haproxy
   when: ansible_os_family == "Debian"
 
@@ -86,6 +91,6 @@
 
 - name: Ensure haproxy is started
   service: >
-    name=haproxy 
+    name=haproxy
     state=started
     enabled=yes
