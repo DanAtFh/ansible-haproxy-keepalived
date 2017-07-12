@@ -57,6 +57,10 @@ haproxy_src_dir: /tmp
 haproxy_make_option: TARGET=linux2628 CPU=x86_64 USE_OPENSSL=1 USE_ZLIB=1 USE_PCRE=1
 ```
 
+## References
+- http://www.fromdual.com/making-haproxy-high-available-for-mysql-galera-cluster
+- http://behindtheracks.com/2014/04/mysql-high-availability-with-galera-and-haproxy/
+
 ## Contributing
 
 1. Fork it
