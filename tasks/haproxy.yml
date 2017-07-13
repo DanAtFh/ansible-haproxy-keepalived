@@ -54,7 +54,6 @@
     creates=/usr/sbin/{{ item }}
   with_items:
     - haproxy
-    - haproxy-systemd-wrapper
 
 - name: Ensure haproxy init script is copied(RedHat)
   shell: >

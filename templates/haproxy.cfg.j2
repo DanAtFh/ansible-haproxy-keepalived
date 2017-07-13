@@ -12,7 +12,6 @@ frontend mysql_in
     maxconn 30000
     default_backend mysql_backend
 
-
 backend ju_backend
     mode http
     ##  Force SSL ##
@@ -30,7 +29,8 @@ backend mysql_backend
     server  node1   192.168.202.201:3306 maxconn 151 check
     server  node2   192.168.202.202:3306 maxconn 151 check
 
-listen stats :8181
+listen stats
+   bind 0.0.0.0:8181
    mode http
    stats enable
    stats realm Haproxy\ Statistics
