@@ -1,6 +1,6 @@
 ---
 # Keepalived config
-keepalived_bind_interface: eth0
+keepalived_bind_interface: enp0s8
 keepalived_vip: 192.168.202.20
 
 # HAProxy setting
